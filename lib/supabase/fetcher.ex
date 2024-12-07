@@ -238,7 +238,7 @@ defmodule Supabase.Fetcher do
   """
   @impl true
   def upload(method, url, file, headers \\ []) do
-    body_stream = File.stream!(file, 4096, encoding: :utf8)
+    body_stream = File.stream!(file, 4096)
     %File.Stat{size: content_length} = File.stat!(file)
     content_headers = [{"content-length", to_string(content_length)}]
     headers = merge_headers(headers, content_headers)
